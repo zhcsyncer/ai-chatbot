@@ -20,7 +20,7 @@ interface TextArtifactMetadata {
 
 export const textArtifact = new Artifact<'text', TextArtifactMetadata>({
   kind: 'text',
-  description: 'Useful for text content, like drafting essays and emails.',
+  description: '适用于文本内容，如起草文章和电子邮件。',
   initialize: async ({ documentId, setMetadata }) => {
     const suggestions = await getSuggestions({ documentId });
 
@@ -102,7 +102,7 @@ export const textArtifact = new Artifact<'text', TextArtifactMetadata>({
   actions: [
     {
       icon: <ClockRewind size={18} />,
-      description: 'View changes',
+      description: '查看更改',
       onClick: ({ handleVersionChange }) => {
         handleVersionChange('toggle');
       },
@@ -116,7 +116,7 @@ export const textArtifact = new Artifact<'text', TextArtifactMetadata>({
     },
     {
       icon: <UndoIcon size={18} />,
-      description: 'View Previous version',
+      description: '查看上一版本',
       onClick: ({ handleVersionChange }) => {
         handleVersionChange('prev');
       },
@@ -130,7 +130,7 @@ export const textArtifact = new Artifact<'text', TextArtifactMetadata>({
     },
     {
       icon: <RedoIcon size={18} />,
-      description: 'View Next version',
+      description: '查看下一版本',
       onClick: ({ handleVersionChange }) => {
         handleVersionChange('next');
       },
@@ -144,33 +144,33 @@ export const textArtifact = new Artifact<'text', TextArtifactMetadata>({
     },
     {
       icon: <CopyIcon size={18} />,
-      description: 'Copy to clipboard',
+      description: '复制到剪贴板',
       onClick: ({ content }) => {
         navigator.clipboard.writeText(content);
-        toast.success('Copied to clipboard!');
+        toast.success('已复制到剪贴板！');
       },
     },
   ],
   toolbar: [
     {
       icon: <PenIcon />,
-      description: 'Add final polish',
+      description: '添加最终润色',
       onClick: ({ appendMessage }) => {
         appendMessage({
           role: 'user',
           content:
-            'Please add final polish and check for grammar, add section titles for better structure, and ensure everything reads smoothly.',
+            '请添加最终润色并检查语法，添加章节标题以获得更好的结构，并确保一切读起来流畅。',
         });
       },
     },
     {
       icon: <MessageIcon />,
-      description: 'Request suggestions',
+      description: '请求建议',
       onClick: ({ appendMessage }) => {
         appendMessage({
           role: 'user',
           content:
-            'Please add suggestions you have that could improve the writing.',
+            '请提供您认为可以改进写作的建议。',
         });
       },
     },

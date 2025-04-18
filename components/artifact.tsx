@@ -1,5 +1,6 @@
 import type { Attachment, UIMessage } from 'ai';
 import { formatDistance } from 'date-fns';
+import { zhCN } from 'date-fns/locale';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   type Dispatch,
@@ -237,7 +238,7 @@ function PureArtifact({
   );
 
   if (!artifactDefinition) {
-    throw new Error('Artifact definition not found!');
+    throw new Error('未找到构件定义！');
   }
 
   useEffect(() => {
@@ -417,15 +418,16 @@ function PureArtifact({
 
                   {isContentDirty ? (
                     <div className="text-sm text-muted-foreground">
-                      Saving changes...
+                      正在保存更改...
                     </div>
                   ) : document ? (
                     <div className="text-sm text-muted-foreground">
-                      {`Updated ${formatDistance(
+                      {`更新于 ${formatDistance(
                         new Date(document.createdAt),
                         new Date(),
                         {
                           addSuffix: true,
+                          locale: zhCN,
                         },
                       )}`}
                     </div>

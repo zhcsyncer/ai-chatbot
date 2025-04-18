@@ -6,18 +6,18 @@ import { toast } from 'sonner';
 import { useArtifact } from '@/hooks/use-artifact';
 
 const getActionText = (
-  type: 'create' | 'update' | 'request-suggestions',
-  tense: 'present' | 'past',
+    type: 'create' | 'update' | 'request-suggestions',
+    tense: 'present' | 'past',
 ) => {
   switch (type) {
     case 'create':
-      return tense === 'present' ? 'Creating' : 'Created';
+      return tense === 'present' ? '创建中' : '已创建';
     case 'update':
-      return tense === 'present' ? 'Updating' : 'Updated';
+      return tense === 'present' ? '更新中' : '已更新';
     case 'request-suggestions':
       return tense === 'present'
-        ? 'Adding suggestions'
-        : 'Added suggestions to';
+          ? '生成建议中'
+          : '建议已添加至';
     default:
       return null;
   }
@@ -78,7 +78,14 @@ function PureDocumentToolResult({
         ) : null}
       </div>
       <div className="text-left">
-        {`${getActionText(type, 'past')} "${result.title}"`}
+        <span className={`text-sm font-semibold ${
+            type === 'create' ? 'text-gray-600' :
+                type === 'update' ? 'text-gray-500' :
+                    'text-gray-400'
+        }`}>
+            {getActionText(type, 'past')}
+        </span> {result.title}
+        {/*{`${getActionText(type, 'past')} "${result.title}"`}*/}
       </div>
     </button>
   );

@@ -222,7 +222,7 @@ function PureMultimodalInput({
       <Textarea
         data-testid="multimodal-input"
         ref={textareaRef}
-        placeholder="Send a message..."
+        placeholder="发送消息..."
         value={input}
         onChange={handleInput}
         className={cx(
@@ -240,7 +240,7 @@ function PureMultimodalInput({
             event.preventDefault();
 
             if (status !== 'ready') {
-              toast.error('Please wait for the model to finish its response!');
+              toast.error('请等待模型完成回复！');
             } else {
               submitForm();
             }

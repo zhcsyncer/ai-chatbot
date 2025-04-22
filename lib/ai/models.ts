@@ -20,6 +20,11 @@ export const chatModels: Array<ChatModel> = [
   {
     id: 'grok-model',
     name: 'Grok3',
-    description: '使用高级推理能力',
+    description: '感谢马老师的超能力',
+  },
+  {
+    id: 'gemini-model',
+    name: 'Gemini 2.5 Pro',
+    description: 'Google AI Studio',
   },
 ];

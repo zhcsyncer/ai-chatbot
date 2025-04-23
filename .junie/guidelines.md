@@ -11,12 +11,62 @@
 - 通过 NextAuth.js 进行身份验证
 
 ## 项目结构
+
+### 核心目录
 - `app/` - Next.js App Router 结构，包含 React 服务器组件
+  - `app/(auth)/` - 认证相关路由和页面，处理用户登录注册
+  - `app/(chat)/` - 聊天相关路由和页面，包含主要的聊天功能
+  - `app/layout.tsx` - 应用根布局组件
+  - `app/globals.css` - 全局样式定义
+
 - `components/` - 可重用的 UI 组件
+  - `components/ui/` - 基础UI组件库，基于shadcn/ui构建
+  - `components/chat.tsx` - 主聊天界面组件
+  - `components/message.tsx` - 聊天消息组件
+  - `components/message-editor.tsx` - 消息编辑器组件
+  - `components/code-block.tsx` & `components/code-editor.tsx` - 代码展示和编辑组件
+  - `components/sheet-editor.tsx` - 电子表格编辑器组件
+  - `components/text-editor.tsx` - 文本编辑器组件
+  - `components/create-artifact.tsx` - 创建工件组件
+  - `components/artifact-*.tsx` - 工件相关组件系列
+  - `components/sidebar-*.tsx` - 侧边栏相关组件系列
+  - `components/model-selector.tsx` - AI模型选择器组件
+  - `components/multimodal-input.tsx` - 多模态输入组件
+
 - `lib/` - 实用函数和共享代码
-  - `lib/db/` - 数据库模型和迁移脚本
-- `public/` - 静态资源
-- `styles/` - 全局 CSS 样式
+  - `lib/ai/` - AI功能相关代码，包括模型集成和配置
+  - `lib/db/` - 数据库模型、迁移脚本和查询函数
+  - `lib/editor/` - 编辑器相关工具和配置
+  - `lib/artifacts/` - 工件类型定义和处理逻辑
+  - `lib/utils.ts` - 通用工具函数
+  - `lib/constants.ts` - 应用常量定义
+
+- `artifacts/` - 工件类型实现
+  - `artifacts/sheet/` - 电子表格工件实现
+  - 其他工件类型实现...
+
+- `hooks/` - 自定义React Hooks
+  - 提供状态管理和功能复用的钩子函数
+
+- `public/` - 静态资源文件
+  - 包含图像、图标和其他静态资源
+
+### 配置和构建文件
+- `next.config.ts` - Next.js配置文件
+- `tailwind.config.ts` - Tailwind CSS配置
+- `drizzle.config.ts` - Drizzle ORM配置
+- `playwright.config.ts` - Playwright测试配置
+- `tsconfig.json` - TypeScript配置
+- `package.json` - 项目依赖和脚本
+
+### 测试和文档
+- `tests/` - 测试文件目录，包含Playwright端到端测试
+- `docs/` - 项目文档目录
+- `.junie/` - Junie AI助手配置和指南
+
+### 版本控制和CI/CD
+- `.github/` - GitHub工作流程和配置
+- `.gitignore` - Git忽略文件配置
 
 ## 开发工作流程
 
@@ -59,3 +109,9 @@ pnpm build
 ## 依赖管理
 - 使用 `pnpm` 作为包管理器（版本 9.12.3 或兼容版本）
 - 添加新依赖时，确保它们与现有技术栈兼容
+
+## 重要参考文档
+- AI SDK文档: https://sdk.vercel.ai/docs
+- Chat SDK文档: https://chat-sdk.dev/docs/getting-started/overview (本地文档 docs/chat_sdk_*)
+- [Next.js文档](https://nextjs.org/docs)
+- [原始模板信息](https://github.com/vercel/ai-chatbot) - Vercel AI-chatbot模板

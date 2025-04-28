@@ -34,7 +34,8 @@ export async function POST(request: Request) {
   try {
     const json = await request.json();
     requestBody = postRequestBodySchema.parse(json);
-  } catch (_) {
+  } catch (e) {
+    console.error(e)
     return new Response('Invalid request body', { status: 400 });
   }
 
@@ -173,11 +174,13 @@ export async function POST(request: Request) {
           sendReasoning: true,
         });
       },
-      onError: () => {
+      onError: (e) => {
+        console.error(e);
         return 'Oops, an error occurred!';
       },
     });
-  } catch (_) {
+  } catch (e) {
+    console.error(e);
     return new Response('An error occurred while processing your request!', {
       status: 500,
     });
@@ -209,6 +212,7 @@ export async function DELETE(request: Request) {
 
     return Response.json(deletedChat, { status: 200 });
   } catch (error) {
+    console.error(error);
     return new Response('An error occurred while processing your request!', {
       status: 500,
     });
